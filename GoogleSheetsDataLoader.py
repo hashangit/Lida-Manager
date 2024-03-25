@@ -3,7 +3,7 @@ import gspread
 from gspread.exceptions import SpreadsheetNotFound, APIError, WorksheetNotFound
 
 class GoogleSheetsDataLoader:
-    GOOGLE_SHEET_ID = '1VbUa5AvOBgArjoigeuZbptKKoqpKKB5WPgcV77AYAIg'
+    GOOGLE_SHEET_ID = 'your_google_sheeet_id_here'
 
     def __init__(self, credentials_filename='client_secret.json'):
         self.credentials_filename = credentials_filename
@@ -56,33 +56,34 @@ class GoogleSheetsDataLoader:
     def load_gads_df(self):
         return self.load_worksheet_as_df('GAds')
     
-    def load_gadst_df(self):
-        return self.load_worksheet_as_df('GAdsT')
+    def load_meta_ads_df(self):
+        return self.load_worksheet_as_df('MetaAds')
 
-    def load_last_week_data(self):
-        return self.load_worksheet_as_df('CB')
+    def load_purchase_data_df(self):
+        return self.load_worksheet_as_df('Purchase_data')
 
-    def load_i_df(self):
-        return self.load_worksheet_as_df('Indicative')
+    def load_c_data_df(self):
+        return self.load_worksheet_as_df('Customer_data')
 
     def load_campaign_df(self):
         return self.load_worksheet_as_df('Campaigns')
 
     def load_t_campaign_df(self):
-        return self.load_worksheet_as_df('Campaigns by Topics')
+        return self.load_worksheet_as_df('Campaigns by theme')
 
-    def load_topics_df(self):
-        return self.load_worksheet_as_df('Topics')
+    def load_themes_df(self):
+        return self.load_worksheet_as_df('Themes')
 
     def load_all_data(self):
         print("Gathering all the scrolls, a quest to uncover all secrets at once...")
         return {
-            'gadst_df': self.load_gadst_df(),
-            'last_week_data': self.load_last_week_data(),
-            'i_df': self.load_i_df(),
+            'gads_df': self.load_gads_df(),
+            'meta_ads_df': self.load_meta_ads_df(),
+            'purchase_data_df': self.load_purchase_data_df(),
+            'c_data_df': self.load_c_data_df(),
             'campaign_df': self.load_campaign_df(),
             't_campaign_df': self.load_t_campaign_df(),
-            'topics_df': self.load_topics_df()
+            'themes_df': self.load_themes_df()
         }
 
 # Usage example
